@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function ViewItems() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setisError] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +17,8 @@ export default function ViewItems() {
           setIsLoading(false); // Set loading state to false after data is fetched
         }).catch((error)=>{
           console.log(error);
+          setisError(true)
+          
           // setIsLoading(false)
         })
         
@@ -33,7 +36,8 @@ export default function ViewItems() {
   };
 
   return (
-    <>
+<>
+    {isError ?  <>
       <h1 className='text-clip text-white bg-black text-center text-3xl font-bold '>View entries</h1>
       <div className='w-full h-screen flex flex-wrap gap-8 bg-black text-white'>
         {isLoading ? (
@@ -52,6 +56,7 @@ export default function ViewItems() {
           ))
         )}
       </div>
-    </>
+    </> : <p>Error <p/>}
+   </>
   );
 }
