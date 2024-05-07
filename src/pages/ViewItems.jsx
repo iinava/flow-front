@@ -16,7 +16,7 @@ export default function ViewItems() {
           setIsLoading(false); // Set loading state to false after data is fetched
         }).catch((error)=>{
           console.log(error);
-          setIsLoading(false)
+          // setIsLoading(false)
         })
         
      
